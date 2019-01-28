@@ -44,7 +44,7 @@
   <body>
     <div id="graphiql">Loading...</div>
     <script>
-
+      var token = prompt('Type the Token: ');
       /**
        * This GraphiQL example illustrates how to use some of GraphiQL's props
        * in order to enable reading and updating the URL parameters, making
@@ -109,14 +109,15 @@
       function graphQLFetcher(graphQLParams) {
         // This example expects a GraphQL server at the path /graphql.
         // Change this to point wherever you host your GraphQL server.
-        return fetch('/graphql', {
+        return fetch('http://localhost/graphql', {
           method: 'post',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + token,
           },
           body: JSON.stringify(graphQLParams),
-          credentials: 'include',
+          // credentials: 'include', //TODO Comentei para o browser permitir o CORS;
         }).then(function (response) {
           return response.text();
         }).then(function (responseBody) {
