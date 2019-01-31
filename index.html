@@ -44,7 +44,8 @@
   <body>
     <div id="graphiql">Loading...</div>
     <script>
-      var token = prompt('Type the Token: ');
+      var token = prompt('Type the Token: ', localStorage.getItem('token'));
+      localStorage.setItem('token', token);
       /**
        * This GraphiQL example illustrates how to use some of GraphiQL's props
        * in order to enable reading and updating the URL parameters, making
